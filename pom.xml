@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>CurrencyExercise</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.8.v20171121</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.1.4.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.8</version>
+        </dependency>
+    </dependencies>
+
+
+</project>
+
+
+        <!--
+
+        Napisz usługę w Springu lub Java EE, tak by pod adresem /currency/{code} była dostępna na sztywno zwracana wartość podanej waluty w kodzie.
+        Dostępne waluty:
+        {code} = PLN, USD, EUR
+
+        Czyli na przykład:
+        - dla localhost:8080/currency/PLN powiedzmy niech zwróci wartość 3,55
+
+        - dla localhost:8080/currency/USD zwróci wartość 5,55
+
+        - dla localhost:8080/currency/EUR zwróci wartość 4,55
+
+        Możesz sobie zrobić mapę na sztywno z tymi wartościami, celem tego zadania jest obsługa wyjątku.
+
+        Jeśli wpiszę kod waluty, która nie istnieje w Twojej aplikacji na przykład:
+        localhost:8080/currency/FFF lub localhost:8080/currency/GGG
+
+        Wtedy powinien zostać obsłużony wyjątek i nie powinno zwrócić wartości tej waluty, a wiadomość, że taki {code} nie istnieje.
+
+
+        -->
