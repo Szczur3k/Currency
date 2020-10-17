@@ -1,19 +1,28 @@
 package pl.MateuszLukaszczyk.Model;
 
-public enum Currency {
+import java.util.HashMap;
 
-    PLN(3.55),
-    USD(4.55),
-    EUR(5.55);
+public class Currency {
 
-    private double amount;
-
-    Currency(double amount){
-        this.amount = amount;
+    public Currency(){
     }
 
-    double getAmount(){
-        return amount;
+    HashMap<String, Double> currencyMap = new HashMap<>();
+
+    public void addingCurrency(){
+        currencyMap.put("PLN", 3.55);
+        currencyMap.put("EUR", 4.55);
+        currencyMap.put("USD", 5.55);
     }
+
+    public HashMap<String, Double> getCurencyMap() {
+        return currencyMap;
+    }
+
+    public void setCurencyMap(HashMap<String, Double> currencyMap) {
+        this.currencyMap = currencyMap;
+    }
+
+
 
 }
