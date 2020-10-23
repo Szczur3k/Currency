@@ -7,50 +7,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pl.MateuszLukaszczyk.Exceptions.ApiRequestException;
-import pl.MateuszLukaszczyk.Model.Currency;
+import pl.MateuszLukaszczyk.service.CurrencyService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/currency")
 public class CurrencyController {
 
-    Currency currency = new Currency();
+    CurrencyService currencyService = new CurrencyService();
 
-    @GetMapping("/currency/{code:[A-Z]+}")
+    @GetMapping("/{code:[A-Z]+}")
     @ResponseBody
     public ResponseEntity<Double> returnActualCurrency(@PathVariable String code) {
-        try {
-            currency.addingCurrency();
-            switch (code) {
-                case "PLN":
-                    return ResponseEntity
-                            .status(HttpStatus.OK)
-                            .body(currency.getCurencyMap().get("PLN"));
-                case "USD":
-                    return ResponseEntity
-                            .status(HttpStatus.OK)
-                            .body(currency.getCurencyMap().get("USD"));
-                case "EUR":
-                    return ResponseEntity
-                            .status(HttpStatus.OK)
-                            .body(currency.getCurencyMap().get("EUR"));
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.getStackTrace();
-        }
-
-        throw new ApiRequestException("Sorry '" + code + "' doesn't exist");
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(currencyService.getDoubleResponseEntity(code));
     }
 
-    @GetMapping("/currency")
     @ResponseBody
+    @GetMapping
     public ResponseEntity<String> availableCurrency() {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body("Available Currency: PLN, USD, EUR");
     }
-
 }
 
 
