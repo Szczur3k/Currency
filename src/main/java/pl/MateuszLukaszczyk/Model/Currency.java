@@ -1,8 +1,13 @@
 package pl.MateuszLukaszczyk.Model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter
+@Setter
 public class Currency {
 
     Map<String, Double> currencyMap = new HashMap<>();
@@ -17,11 +22,4 @@ public class Currency {
         currencyMap.put("USD", 5.55);
     }
 
-    public Map<String, Double> getCurencyMap() {
-        return currencyMap;
-    }
-
-    public void setCurencyMap(HashMap<String, Double> currencyMap) {
-        this.currencyMap = currencyMap;
-    }
 }
